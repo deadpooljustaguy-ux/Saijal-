@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Saijal ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffd6e8, #ffc2dd);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: #333;
+    transition: 1s;
+}
+
+.container {
+    max-width: 90%;
+    padding: 20px;
+}
+
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 25px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.softBtn {
+    background: #ff6fa5;
+    color: white;
+}
+
+.yesBtn {
+    background: white;
+    color: #ff4e7a;
+}
+
+.noBtn {
+    background: black;
+    color: white;
+    position: absolute;
+}
+
+.devil {
+    position: absolute;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+
+.glitch {
+    background: black !important;
+    color: red !important;
+}
+
+.spotify {
+    position: absolute;
+    bottom: 10px;
+    width: 90%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="content">
+    <h1>Hi Saijal 🌸</h1>
+    <p>I made something gentle for you…</p>
+    <button class="softBtn" onclick="nextSlide()">Click softly</button>
+</div>
+
+<div class="spotify">
+<iframe style="border-radius:12px"
+src="https://open.spotify.com/embed/track/3vkCueOmm7xQDoJ17W1Pm3"
+width="100%" height="80" frameBorder="0"
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+</div>
+
+<script>
+
+const slides = [
+{title:"Saijal…", text:"You feel like peace.", btn:"Continue"},
+{title:"When you smile…", text:"Everything slows down.", btn:"Okay…"},
+{title:"I tried being calm about this.", text:"I really did.", btn:"Go on"},
+{title:"But there’s something you should know.", text:"I don’t play fair when it comes to you.", btn:"What do you mean?"},
+{title:"ERROR 404", text:"System overload. Too many feelings detected.", crash:true}
+];
+
+let current = 0;
+
+function nextSlide() {
+    current++;
+    const slide = slides[current];
+
+    if(slide.crash) {
+        systemCrash();
+        return;
+    }
+
+    document.getElementById("content").innerHTML = `
+        <h1>${slide.title}</h1>
+        <p>${slide.text}</p>
+        <button class="softBtn" onclick="nextSlide()">${slide.btn}</button>
+    `;
+}
+
+function systemCrash() {
+    document.body.classList.add("glitch");
+    document.getElementById("content").innerHTML = `
+        <h1>SYSTEM COMPROMISED</h1>
+        <p>Soft boy mode shutting down...</p>
+    `;
+
+    setTimeout(() => {
+        villainMode();
+    }, 2500);
+}
+
+function villainMode() {
+    document.body.style.background = "linear-gradient(135deg, #000000, #300000)";
+    document.body.style.color = "white";
+
+    document.getElementById("content").innerHTML = `
+        <h1>Alright Saijal 😈</h1>
+        <p>You thought this was just cute?</p>
+        <p>I’ve already decided.</p>
+        <p>You’re mine.</p>
+        <button class="yesBtn" onclick="proposal()">Prove it.</button>
+    `;
+
+    startDevils();
+}
+
+function proposal() {
+    document.getElementById("content").innerHTML = `
+        <h1>Be with me?</h1>
+        <button class="yesBtn" onclick="finalYes()">YES ❤️</button>
+        <button class="noBtn" id="noBtn">No 😈</button>
+    `;
+    moveNoButton();
+}
+
+function moveNoButton() {
+    const noBtn = document.getElementById("noBtn");
+    noBtn.addEventListener("mouseover", () => {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    });
+}
+
+function finalYes() {
+    document.getElementById("content").innerHTML = `
+        <h1>It’s official 💕</h1>
+        <p>It’s you, me…</p>
+        <p>and Satpal.</p>
+        <p>Forever.</p>
+    `;
+}
+
+function startDevils() {
+    setInterval(() => {
+        const devil = document.createElement("div");
+        devil.classList.add("devil");
+        devil.innerHTML = "😈";
+        devil.style.left = Math.random() * 100 + "vw";
+        devil.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(devil);
+        setTimeout(() => devil.remove(), 6000);
+    }, 800);
+}
+
+</script>
+
+</body>
+</html>
